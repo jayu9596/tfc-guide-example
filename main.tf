@@ -54,9 +54,9 @@ locals {
     "PERSISTENCE" = local.persistence_whitelisted_tenants
   })
 
-  experimental_mode_whitelisted_tenants_new = join("", local.persistence_whitelisted_tenants, local.dormant_user_whitelisted_tenants)
+  #experimental_mode_whitelisted_tenants_new = join("", local.persistence_whitelisted_tenants, local.dormant_user_whitelisted_tenants)
 
-  # experimental_mode_whitelisted_tenants_json = jsondecode(local.experimental_mode_whitelisted_tenants)
+  experimental_mode_whitelisted_tenants_json = jsondecode(local.dormant_user_whitelisted_tenants)
 
 
 
@@ -69,6 +69,6 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = tostring(local.experimental_mode_whitelisted_tenants_new)
+    "Content" = tostring(experimental_mode_whitelisted_tenants_json)
   }
 }
