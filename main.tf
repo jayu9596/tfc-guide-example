@@ -29,22 +29,22 @@ locals {
   tab                     = "\"\t"
 
   dormant_user_whitelisted_tenants = tolist([
-    "ocid1.tenancy.oc1..ewrtdsgfbc",
-    "ocid1.tenancy.oc1..werfbasfdd"
+    "d1",
+    "d2"
   ])
 
   privilege_escalation_whitelisted_tenants = tolist([
-    "ocid1.tenancy.oc1..aergadvaetr"
+    "pe1"
   ])
 
   impair_defenses_whitelisted_tenants = tolist([
-    "ocid1.tenancy.oc1..sedrydfrv",
-    "ocid1.tenancy.oc1..aergdfver",
-    "ocid1.tenancy.oc1..saderarsd"
+    "i1",
+    "i2",
+    "i3"
   ])
 
   persistence_whitelisted_tenants = tolist([
-    "ocid1.tenancy.oc1..erydsfgawgsdefrtg"
+    "p1"
   ])
 
   experimental_mode_whitelisted_tenants = tomap({
