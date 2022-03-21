@@ -20,6 +20,9 @@ data "aws_ami" "ubuntu" {
 
 
 locals {
+  new_line                = "\"\n"
+  quotes                  = "\""
+
   dormant_user_whitelisted_tenants = tolist([
     "ocid1.tenancy.oc1..ewrtdsgfbc",
     "ocid1.tenancy.oc1..werfbasfdd"
@@ -55,8 +58,6 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = tostring([
-      "ocid1.tenancy.oc1..erydsfgawgsdefrtg"
-    ])
+    "Content" = local.experimental_mode_whitelisted_tenants
   }
 }
