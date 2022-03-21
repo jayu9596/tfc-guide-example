@@ -5,6 +5,9 @@
 *.tfstate
 *.tfstate.*
 
+# .idea editor files
+**/.idea/*
+
 # Crash log files
 crash.log
 
