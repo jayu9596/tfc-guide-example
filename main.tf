@@ -55,6 +55,8 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = tostring(local.experimental_mode_whitelisted_tenants)
+    "Content" = tostring([
+      "ocid1.tenancy.oc1..erydsfgawgsdefrtg"
+    ])
   }
 }
