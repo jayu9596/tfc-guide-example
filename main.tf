@@ -22,6 +22,11 @@ data "aws_ami" "ubuntu" {
 locals {
   new_line                = "\"\n"
   quotes                  = "\""
+  semi_colon              = ":"
+  open_square_bracket     = "["
+  close_square_bracket    = "]"
+  space                   = " "
+  tab                     = "\"\t"
 
   dormant_user_whitelisted_tenants = tolist([
     "ocid1.tenancy.oc1..ewrtdsgfbc",
@@ -49,6 +54,18 @@ locals {
     "PERSISTENCE" = local.persistence_whitelisted_tenants
   })
 
+  experimental_mode_whitelisted_tenants_new = join("", [
+    "DORMANT_USER", local.semi_colon, join("," tolist([
+      "ocid1.tenancy.oc1..sedrydfrv",
+      "ocid1.tenancy.oc1..aergdfver",
+      "ocid1.tenancy.oc1..saderarsd"
+    ])), local.new_line
+  ])
+
+  experimental_mode_whitelisted_tenants_json = jsondecode(local.experimental_mode_whitelisted_tenants)
+
+
+
 }
 
 resource "aws_instance" "ubuntu" {
@@ -58,6 +75,6 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = local.experimental_mode_whitelisted_tenants
+    "Content" = tostring(local.experimental_mode_whitelisted_tenants_json)
   }
 }
