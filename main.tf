@@ -67,6 +67,9 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = jsonencode(local.dormant_user_whitelisted_tenants)
+    "Content" = jsonencode(tolist([
+      "ocid1.tenancy.oc1..ewrtdsgfbc",
+      "ocid1.tenancy.oc1..werfbasfdd"
+    ]))
   }
 }
