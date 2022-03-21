@@ -28,24 +28,13 @@ locals {
   space                   = " "
   tab                     = "\"\t"
 
-  dormant_user_whitelisted_tenants = tolist([
-    "d1",
-    "d2"
-  ])
+  dormant_user_whitelisted_tenants = tolist([])
 
-  privilege_escalation_whitelisted_tenants = tolist([
-    "pe1"
-  ])
+  privilege_escalation_whitelisted_tenants = tolist([])
 
-  impair_defenses_whitelisted_tenants = tolist([
-    "i1",
-    "i2",
-    "i3"
-  ])
+  impair_defenses_whitelisted_tenants = tolist([])
 
-  persistence_whitelisted_tenants = tolist([
-    "p1"
-  ])
+  persistence_whitelisted_tenants = tolist([])
 
   experimental_mode_whitelisted_tenants = tomap({
     "experimentalModeWhitelistedTenants" = tomap({
