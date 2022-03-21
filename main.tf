@@ -54,7 +54,7 @@ locals {
     "PERSISTENCE" = local.persistence_whitelisted_tenants
   })
 
-  experimental_mode_whitelisted_tenants_new = join("", local.impair_defenses_whitelisted_tenants)
+  experimental_mode_whitelisted_tenants_new = join("", local.persistence_whitelisted_tenants, local.dormant_user_whitelisted_tenants)
 
   # experimental_mode_whitelisted_tenants_json = jsondecode(local.experimental_mode_whitelisted_tenants)
 
