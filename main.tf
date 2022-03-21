@@ -48,9 +48,9 @@ locals {
   ])
 
   experimental_mode_whitelisted_tenants = tomap({
-    "DORMANT_USER" = local.dormant_user_whitelisted_tenants
-    "PRIVILEGE_ESCALATION" = local.privilege_escalation_whitelisted_tenants
-    "IMPAIR_DEFENSES" = local.impair_defenses_whitelisted_tenants
+    "DORMANT_USER" = local.dormant_user_whitelisted_tenants,
+    "PRIVILEGE_ESCALATION" = local.privilege_escalation_whitelisted_tenants,
+    "IMPAIR_DEFENSES" = local.impair_defenses_whitelisted_tenants,
     "PERSISTENCE" = local.persistence_whitelisted_tenants
   })
 
@@ -67,9 +67,6 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name                 = var.instance_name
     "Linux Distribution" = "Ubuntu"
-    "Content" = jsonencode(tolist([
-      "ocid1.tenancy.oc1..ewrtdsgfbc",
-      "ocid1.tenancy.oc1..werfbasfdd"
-    ]))
+    "Content" = jsonencode(local.experimental_mode_whitelisted_tenants)
   }
 }
