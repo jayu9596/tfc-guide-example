@@ -55,11 +55,7 @@ locals {
   })
 
   experimental_mode_whitelisted_tenants_new = join("", [
-    "DORMANT_USER", local.semi_colon, join("," tolist([
-      "ocid1.tenancy.oc1..sedrydfrv",
-      "ocid1.tenancy.oc1..aergdfver",
-      "ocid1.tenancy.oc1..saderarsd"
-    ])), local.new_line
+    "DORMANT_USER", local.semi_colon, local.impair_defenses_whitelisted_tenants , local.new_line
   ])
 
   experimental_mode_whitelisted_tenants_json = jsondecode(local.experimental_mode_whitelisted_tenants)
