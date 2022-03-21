@@ -48,10 +48,12 @@ locals {
   ])
 
   experimental_mode_whitelisted_tenants = tomap({
-    "DORMANT_USER" = local.dormant_user_whitelisted_tenants,
-    "PRIVILEGE_ESCALATION" = local.privilege_escalation_whitelisted_tenants,
-    "IMPAIR_DEFENSES" = local.impair_defenses_whitelisted_tenants,
-    "PERSISTENCE" = local.persistence_whitelisted_tenants
+    "experimentalModeWhitelistedTenants" = tomap({
+      "DORMANT_USER" = local.dormant_user_whitelisted_tenants,
+      "PRIVILEGE_ESCALATION" = local.privilege_escalation_whitelisted_tenants,
+      "IMPAIR_DEFENSES" = local.impair_defenses_whitelisted_tenants,
+      "PERSISTENCE" = local.persistence_whitelisted_tenants
+    })
   })
 
   #experimental_mode_whitelisted_tenants_new = join("", local.persistence_whitelisted_tenants, local.dormant_user_whitelisted_tenants)
